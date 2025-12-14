@@ -2,23 +2,34 @@
 #include <vector>
 #include <string>
 
-// Функция 1: Чтение строк из файла в вектор
-std::vector<std::string> readFromFile(const std::string& filename) {
+static std::vector<std::string> readFromFile(const std::string& filename) {
     std::vector<std::string> lines;
-    // TODO: Реализовать чтение из файла
-    std::cout << "[DEBUG] readFromFile called. Returning empty vector.\n";
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error: Cannot open file " << filename << std::endl;
+        return lines;
+    }
+
+    std::string line;
+    while (std::getline(file, line)) {
+        lines.push_back(line);
+    }
+
+    file.close();
     return lines;
 }
 
-// Функция 2: Вывод вектора строк на экран
+
+
+
 void printToScreen(const std::vector<std::string>& lines) {
-    // TODO: Реализовать вывод на экран
+   
     std::cout << "[DEBUG] printToScreen called. Nothing printed.\n";
 }
 
-// Функция 3: Запись вектора строк в файл
+
 void writeToFile(const std::vector<std::string>& lines, const std::string& filename) {
-    // TODO: Реализовать запись в файл
+    
     std::cout << "[DEBUG] writeToFile called. Nothing written.\n";
 }
 
